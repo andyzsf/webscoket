@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>Please LogIn</title>
+</head>
+<body>
+    <form action="/login" method="POST">
+        {% raw xsrf_form_html() %}
+        Username: <input type="text" name="username" />
+        <input type="submit" value="LogIn" />
+    </form>
+</body>
+</html>
