@@ -78,19 +78,16 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
     waiters = set()
     cache = []
     cache_size = 200
-    user = set()
 
     def get_compression_options(self):
         return {}
 
     def open(self, *args, **kwargs):
-        self.on_message({})
         ChatSocketHandler.waiters.add(self)
 
     def on_close(self):
         ChatSocketHandler.waiters.remove(self)
 
-    # @staticmethod
     @classmethod
     def update_cache(cls, chat):
         cls.cache.append(chat)
@@ -109,8 +106,6 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
 
         logging.info("got message %r", message)
-        if message:
-            return
         parsed = tornado.escape.json_decode(message)
         chat = {
             "id": str(uuid.uuid4()),
@@ -124,8 +119,9 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
         ChatSocketHandler.update_cache(chat)
         ChatSocketHandler.send_updates(chat)
 
-    def check_origin(self, origin):
-        return True
+        # def check_origin(self, origin):
+        # return True
+
 
 def main():
     tornado.options.parse_command_line()
