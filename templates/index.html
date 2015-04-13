@@ -13,7 +13,7 @@
         {% end %}
       </div>
       <div id="input">
-        <form  method="post" id="messageform">
+          <form action="{{ request.path }}" method="post" id="messageform">
           <table>
             <tr>
               <td>
@@ -30,13 +30,7 @@
         </form>
       </div>
     </div>
-    <script src="{{ static_url(" jquery.min.js
-    ") }}" type="text/javascript"></script>
-    <
-    script
-    src = "{{ static_url("
-    chat2.js
-    ") }}"
-    type = "text/javascript" ></script>
+    <script src="{{ static_url('jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ static_url('chat.js') }}" type="text/javascript"></script>
   </body>
 </html>
