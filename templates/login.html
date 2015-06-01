@@ -8,7 +8,7 @@
 <body>
     <form action="/login" method="POST">
         {% raw xsrf_form_html() %}
-        请输入昵称: <input type="text" name="username" />
+        请输入昵称: <input type="text" name="username" required autofocus/>
         <input type="submit" value="进入" />
     </form>
 </body>

@@ -1,17 +1,23 @@
 var tag = 1;
 var isusing = false;
 $(document).ready(function () {
+    $('#message').select();
     $("#btn").click(function () {
-        var message = $('#messageform').formToDict();
-        //window.console.log(message);
-        ws.send(JSON.stringify(message));
-        //$('#messageform').find("input[type=text]").val("").select();
-        $('#message').val("");
-        tag = 0;
-        newMessageRemind.clear();
+        var m = $('#message').val();
+        if (m.length == 0)
+            alert("内容不能为空");
+        else {
+            var message = $('#messageform').formToDict();
+            //window.console.log(message);
+            ws.send(JSON.stringify(message));
+            //$('#messageform').find("input[type=text]").val("").select();
+            $('#message').val("");
+            tag = 0;
+            newMessageRemind.clear();
+
+        }
         return false;
     });
-    //$("#message").select();
 });
 var ws = new WebSocket('ws://' + location.host + '/chatsocket');
 
@@ -25,10 +31,6 @@ ws.onmessage = function (msg) {
         }
     }
     else{
-        // if (isusing) {
-        //    newMessageRemind.clear();
-        //    isusing = false;
-        //}
         tag = 1;
     }
     var existing = $("#m" + message.id);
