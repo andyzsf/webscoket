@@ -1,9 +1,10 @@
 $(document).ready(function () {
     $("#btn").click(function () {
         var message = $('#messageform').formToDict();
-        window.console.log(message);
+        //window.console.log(message);
         ws.send(JSON.stringify(message));
         //$('#messageform').find("input[type=text]").val("").select();
+        $('#message').val("");
         return false;
     });
     //$("#message").select();

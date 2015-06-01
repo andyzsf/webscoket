@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Tornado Chat Demo</title>
+    <title>CS229 ChatRoom</title>
     <link rel="stylesheet" href="{{ static_url("chat.css") }}" type="text/css"/>
   </head>
   <body>
     <div id="body">
-      <div id="inbox">
+      <pre id="inbox">
         {% for message in messages %}
           {% include "message.html" %}
         {% end %}
-      </div>
+      </pre>
       <div id="input">
           <form action="{{ request.path }}" method="post" id="messageform">
           <table>
