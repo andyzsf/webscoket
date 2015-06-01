@@ -8,7 +8,7 @@ $(document).ready(function () {
     });
     //$("#message").select();
 });
-var ws = new WebSocket('ws://' + location.host + '/chatsocket');
+var ws = new WebSocket('ws://' + location.host + '/chat/chatsocket');
 
 
 ws.onmessage = function (msg) {
