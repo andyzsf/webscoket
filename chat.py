@@ -25,18 +25,18 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r'/', MainHandler),
-            (r'/chat/chatsocket', ChatSocketHandler),
-            (r'/chat/login', LoginHandler),
-            (r'/chat/logout', LogoutHandler),
-            (r'/chat/register', RegisterHandler),
-            (r'/chat/verifycode', VerigyCode),
+            (r'/chatsocket', ChatSocketHandler),
+            (r'/login', LoginHandler),
+            (r'/logout', LogoutHandler),
+            (r'/register', RegisterHandler),
+            (r'/verifycode', VerigyCode),
         ]
         settings = {
             "cookie_secret": base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes),
             "template_path": os.path.join(os.path.dirname(__file__), 'templates'),
             "static_path": os.path.join(os.path.dirname(__file__), 'static'),
             "xsrf_cookies": "=True",
-            "login_url": "/chat/login",
+            "login_url": "/login",
         }
 
         tornado.web.Application.__init__(self, handlers, **settings)
