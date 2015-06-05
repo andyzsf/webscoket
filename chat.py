@@ -55,14 +55,14 @@ class LoginHandler(BaseHandler):
     def post(self):
         self.set_secure_cookie("username", self.get_argument("username"))
         #  redis.set(uid, uid)
-        self.redirect('/')
+        self.redirect('/chat')
 
 
 class LogoutHandler(BaseHandler):
     def get(self):
         if self.get_secure_cookie("username"):
             self.clear_cookie("username")
-            self.redirect('/')
+            self.redirect('/chat')
 
 
 class VerigyCode(BaseHandler):
