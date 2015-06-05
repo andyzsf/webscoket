@@ -26,7 +26,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/', MainHandler),
             (r'/chatsocket', ChatSocketHandler),
-            (r'/login', LoginHandler),
+            (r'/chat/login', LoginHandler),
             (r'/logout', LogoutHandler),
             (r'/register', RegisterHandler),
             (r'/verifycode', VerigyCode),
@@ -36,7 +36,7 @@ class Application(tornado.web.Application):
             "template_path": os.path.join(os.path.dirname(__file__), 'templates'),
             "static_path": os.path.join(os.path.dirname(__file__), 'static'),
             "xsrf_cookies": "=True",
-            "login_url": "/login",
+            "login_url": "/chat/login",
         }
 
         tornado.web.Application.__init__(self, handlers, **settings)
