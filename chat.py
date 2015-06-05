@@ -26,7 +26,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/', MainHandler),
             (r'/chatsocket', ChatSocketHandler),
-            (r'/chat/login', LoginHandler),
+            (r'/login', LoginHandler),
             (r'/logout', LogoutHandler),
             (r'/register', RegisterHandler),
             (r'/verifycode', VerigyCode),
