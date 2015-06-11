@@ -27,9 +27,6 @@ class Application(tornado.web.Application):
             (r'/', MainHandler),
             (r'/chatsocket', ChatSocketHandler),
             (r'/login', LoginHandler),
-            (r'/logout', LogoutHandler),
-            (r'/register', RegisterHandler),
-            (r'/verifycode', VerigyCode),
         ]
         settings = {
             "cookie_secret": base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes),
@@ -56,22 +53,6 @@ class LoginHandler(BaseHandler):
         self.set_secure_cookie("username", self.get_argument("username"))
         #  redis.set(uid, uid)
         self.redirect('/chat')
-
-
-class LogoutHandler(BaseHandler):
-    def get(self):
-        if self.get_secure_cookie("username"):
-            self.clear_cookie("username")
-            self.redirect('/chat')
-
-
-class VerigyCode(BaseHandler):
-    pass
-
-
-class RegisterHandler(BaseHandler):
-    def get(self):
-        self.render('register.html')
 
 
 class ChatSocketHandler(tornado.websocket.WebSocketHandler):
